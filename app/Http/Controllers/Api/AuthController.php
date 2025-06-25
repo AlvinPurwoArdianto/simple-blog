@@ -38,8 +38,14 @@ class AuthController extends Controller
 
     public function login(Request $request)
     {
-        if (!Auth::attempt($request->only('email', 'password'))) {
+        $credentials = $request->validate([
+            'email' => ['required', 'email'],
+            'password' => ['required'],
+        ]);
+
+        if (!Auth::attempt($credentials)) {
             return response()->json([
+                'status' => false,
                 'message' => 'Unauthorized',
             ], 401);
         }
@@ -52,6 +58,12 @@ class AuthController extends Controller
             'message' => 'Login success',
             'access_token' => $token,
             'token_type' => 'Bearer',
+                'user' => [
+                    'id' => $user->id,
+                    'name' => $user->name,
+                    'email' => $user->email,
+                    'role' => $user->role,
+                ],
         ]);
     }
 
