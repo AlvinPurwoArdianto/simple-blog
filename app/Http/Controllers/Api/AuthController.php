@@ -74,4 +74,9 @@ class AuthController extends Controller
             'message' => 'Logout success',
         ]);
     }
+
+    public function user(Request $request)
+    {
+        return response()->json($request->user());
+    }
 }
