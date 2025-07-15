@@ -43,6 +43,14 @@ class PostsController extends Controller
             'thumbnail' => 'required|image|max:2048',
             'category_id' => 'required',
             'user_id' => 'required',
+        ], [
+            'title.required' => 'The title field is required.',
+            'title.unique' => 'The title field must be unique.',
+            'slug.required' => 'The slug field is required.',
+            'content.required' => 'The content field is required.',
+            'thumbnail.required' => 'The thumbnail field is required.',
+            'category_id.required' => 'The category_id field is required.',
+            'user_id.required' => 'The user_id field is required.',
         ]);
 
         if ($validate->fails()) {
@@ -119,6 +127,14 @@ class PostsController extends Controller
             'thumbnail' => 'required|image|max:2048',
             'category_id' => 'required',
             'user_id' => 'required',
+        ], [
+            'title.required' => 'The title field is required.',
+            'title.unique' => 'The title field must be unique.',
+            'slug.required' => 'The slug field is required.',
+            'content.required' => 'The content field is required.',
+            'thumbnail.required' => 'The thumbnail field is required.',
+            'category_id.required' => 'The category_id field is required.',
+            'user_id.required' => 'The user_id field is required.',
         ]);
 
         if ($validate->fails()) {

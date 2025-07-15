@@ -38,6 +38,10 @@ class CategoriesController extends Controller
         $validate = Validator::make($request->all(), [
             'name' => 'required|unique:categories',
             'slug' => 'required',
+        ],[
+            'name.required' => 'field name is required.',
+            'name.unique' => 'The name field must be unique.',
+            'slug.required' => 'The slug field is required.',
         ]);
 
         if ($validate->fails()) {
@@ -107,6 +111,9 @@ class CategoriesController extends Controller
         $validate = Validator::make($request->all(), [
             'name' => 'required',
             'slug' => 'required',
+        ], [
+            'name.required' => 'field name is required.',
+            'slug.required' => 'The slug field is required.',
         ]);
 
         if ($validate->fails()) {
