@@ -19,7 +19,11 @@ class Role
         if (Auth::user()->role == "admin") {
             return $next($request);
         } else {
-            return abort(403);
+            return response()->json([
+                'message' => 'Unauthorized',
+            ], Response::HTTP_UNAUTHORIZED);
+
+            // return abort(403);
         }
     }
 }
