@@ -26,5 +26,12 @@ class AccountSeeder extends Seeder
         $user->password = Hash::make('rahasia');
         $user->role = 'user';
         $user->save();
+
+        $user = new User();
+        $user->name = 'user';
+        $user->email = 'author@gmail.com';
+        $user->password = Hash::make('rahasia');
+        $user->role = 'author';
+        $user->save();
     }
 }
